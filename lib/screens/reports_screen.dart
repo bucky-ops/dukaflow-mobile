@@ -47,7 +47,7 @@ class ReportsScreen extends ConsumerWidget {
                 child: KpiCard(
                   label: 'Last 7 days',
                   value: kes(weekTotal, compact: true),
-                  icon: Icons.monitoring_outlined,
+                  icon: Icons.insights,
                 ),
               ),
               const SizedBox(width: 8),

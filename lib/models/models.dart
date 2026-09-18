@@ -264,6 +264,7 @@ class Sale {
                     barcode: '',
                     category: '',
                     price: (l['price'] as num?)?.toDouble() ?? 0,
+                    cost: 0,
                   ),
                   qty: (l['qty'] as num?)?.toDouble() ?? 0,
                   unitDiscount: (l['unitDiscount'] as num?)?.toDouble() ?? 0,

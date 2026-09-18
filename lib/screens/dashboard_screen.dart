@@ -120,7 +120,7 @@ class DashboardScreen extends ConsumerWidget {
                 onTap: () => _go(context, const HistoryScreen()),
               ),
               _Action(
-                icon: Icons.monitoring_outlined,
+                icon: Icons.insights,
                 label: 'Reports',
                 onTap: () => _go(context, const ReportsScreen()),
               ),
@@ -136,7 +136,7 @@ class DashboardScreen extends ConsumerWidget {
               ),
             ],
           ),
-          const SectionHeader(title: 'Live Sales Feed', action: 'View All'),
+          const SectionHeader('Live Sales Feed', action: 'View All'),
           if (history.isEmpty)
             const EmptyState(
               icon: Icons.point_of_sale_outlined,

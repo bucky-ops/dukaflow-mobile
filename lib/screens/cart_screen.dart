@@ -219,7 +219,6 @@ class _CartScreenState extends ConsumerState<CartScreen> {
   }
 
   Future<void> _pickCustomer(BuildContext context) async {
-    final customers = ref.read(customersProvider);
     await showModalBottomSheet<void>(
       context: context,
       isScrollControlled: true,

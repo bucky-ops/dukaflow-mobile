@@ -18,7 +18,7 @@ class MoreScreen extends StatelessWidget {
       (Icons.inventory_outlined, 'Inventory', const InventoryScreen()),
       (Icons.credit_score_outlined, 'Debts', const DebtsScreen()),
       (Icons.badge_outlined, 'My Payslip', const PayslipScreen()),
-      (Icons.monitoring_outlined, 'Reports', const ReportsScreen()),
+      (Icons.insights, 'Reports', const ReportsScreen()),
       (Icons.cloud_sync_outlined, 'Sync Center', const SyncCenterScreen()),
       (Icons.settings_outlined, 'Settings', const SettingsScreen()),
     ];

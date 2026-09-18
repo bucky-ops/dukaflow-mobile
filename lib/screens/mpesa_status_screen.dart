@@ -77,7 +77,9 @@ class _MpesaStatusScreenState extends State<MpesaStatusScreen>
                     ? 'Awaiting customer PIN…'
                     : offline
                         ? 'Offline — M-Pesa pending'
-                        : 'STK push failed',
+                        : failed
+                            ? 'STK push failed'
+                            : 'M-Pesa confirmed',
                 style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w800),
               ),
               const SizedBox(height: 6),

@@ -56,7 +56,7 @@ class _ScannerScreenState extends State<ScannerScreen> {
           MobileScanner(
             controller: _controller,
             onDetect: _onDetect,
-            errorBuilder: (_, error) => Center(
+            errorBuilder: (context, error, child) => Center(
               child: Padding(
                 padding: const EdgeInsets.all(24),
                 child: Column(
@@ -65,7 +65,7 @@ class _ScannerScreenState extends State<ScannerScreen> {
                     const Icon(Icons.no_photography, color: Colors.white54, size: 42),
                     const SizedBox(height: 12),
                     Text(
-                      'Camera unavailable\n$error',
+                      'Camera unavailable\n${error.errorCode}',
                       textAlign: TextAlign.center,
                       style: const TextStyle(color: Colors.white54, fontSize: 12),
                     ),

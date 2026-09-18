@@ -137,17 +137,23 @@ class _InventoryScreenState extends ConsumerState<InventoryScreen> {
                     ],
                   ],
                 ),
-                subtitle: Text(
-                  '${p.sku} • ${kes(p.price)} • reorder @ ${p.reorderPoint}',
-                  style: const TextStyle(fontSize: 11),
-                ),
-                trailing: Text(
-                  '${p.qty}',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w800,
-                    fontSize: 16,
-                    color: low ? DukaColors.danger : DukaColors.ink,
-                  ),
+                subtitle: Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        '${p.sku} • ${kes(p.price)} • reorder @ ${p.reorderPoint}',
+                        style: const TextStyle(fontSize: 11),
+                      ),
+                    ),
+                    Text(
+                      '${p.qty} in stock',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w800,
+                        fontSize: 12,
+                        color: low ? DukaColors.danger : DukaColors.ink,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             );

@@ -32,6 +32,9 @@ dependencies:
   firebase_core: ^2.31.0
   firebase_messaging: ^14.9.4
 
+  # ── Background sync job (offline queue drain) ────────────────
+  workmanager: ^0.5.2
+
   # ── Misc ─────────────────────────────────────────────────────
   intl: ^0.19.0
   uuid: ^4.4.0
