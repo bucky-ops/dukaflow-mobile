@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../core/constants.dart';
 import '../core/theme.dart';
+import '../data/hive_service.dart';
 import '../services/biometric_service.dart';
 import '../state/providers.dart';
 import 'login_screen.dart';

@@ -16,6 +16,21 @@ subprojects {
     project.evaluationDependsOn(":app")
 }
 
+// AGP 8 requires a namespace — legacy plugins (e.g. bluetooth_print) still
+// declare `package` in their manifest only. Inject the plugin's group as the
+// namespace when it is missing (official Flutter migration shim).
+subprojects {
+    afterEvaluate { project ->
+        if (project.hasProperty('android')) {
+            project.android {
+                if (namespace == null) {
+                    namespace project.group.toString()
+                }
+            }
+        }
+    }
+}
+
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
 }

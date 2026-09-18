@@ -57,7 +57,7 @@ abstract final class HiveService {
   static String nextOfflineReceiptNo() {
     final n = ((settings.get('offlineSeq') as num?)?.toInt() ?? 0) + 1;
     settings.put('offlineSeq', n);
-    return 'MOB-${DateTime.now().year}-${n.toString().padStart(4, '0')}';
+    return 'MOB-${DateTime.now().year}-${n.toString().padLeft(4, '0')}';
   }
 }
 

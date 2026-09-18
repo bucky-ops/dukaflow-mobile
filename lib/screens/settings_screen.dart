@@ -1,3 +1,4 @@
+import 'package:bluetooth_print/bluetooth_print_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -301,7 +302,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
 }
 
 class _PrinterSheet extends StatelessWidget {
-  final List<dynamic> devices;
+  final List<BluetoothDevice> devices;
 
   const _PrinterSheet({required this.devices});
 

@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../core/theme.dart';
 import '../core/utils.dart';
+import '../models/models.dart';
 import '../state/providers.dart';
 import '../widgets/common.dart';
 import 'customers_screen.dart';

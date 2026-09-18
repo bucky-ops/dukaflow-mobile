@@ -37,7 +37,7 @@ class _ReceiptScreenState extends ConsumerState<ReceiptScreen> {
         ));
         return;
       }
-      final bytes = await PrinterService.buildReceiptBytes(
+      final ok = await PrinterService.printReceipt(
         storeName: 'DUKAFLOW LTD',
         storeSub: 'Thika Road Mall, Nairobi • 0712 345 678',
         kraPin: 'P051234567K',
@@ -56,7 +56,6 @@ class _ReceiptScreenState extends ConsumerState<ReceiptScreen> {
         cuInvoice: 'KRAMW000123456',
         when: widget.sale.createdAt,
       );
-      final ok = await PrinterService.printBytes(bytes);
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text(ok ? 'Printing on EPSON TM-T20…' : 'Print failed — check printer'),

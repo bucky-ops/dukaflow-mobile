@@ -105,7 +105,7 @@ abstract final class PrinterService {
     }
     bytes.addAll(gen.hr());
     bytes.addAll(gen.row([
-      const PosColumn(text: 'Subtotal', width: 6),
+      PosColumn(text: 'Subtotal', width: 6),
       PosColumn(
         text: subtotal.toStringAsFixed(0),
         width: 6,
@@ -114,7 +114,7 @@ abstract final class PrinterService {
     ]));
     if (discount > 0) {
       bytes.addAll(gen.row([
-        const PosColumn(text: 'Discount', width: 6),
+        PosColumn(text: 'Discount', width: 6),
         PosColumn(
           text: '-${discount.toStringAsFixed(0)}',
           width: 6,
@@ -123,7 +123,7 @@ abstract final class PrinterService {
       ]));
     }
     bytes.addAll(gen.row([
-      const PosColumn(text: 'VAT 16%', width: 6),
+      PosColumn(text: 'VAT 16%', width: 6),
       PosColumn(
         text: vat.toStringAsFixed(0),
         width: 6,
@@ -131,7 +131,7 @@ abstract final class PrinterService {
       ),
     ]));
     bytes.addAll(gen.row([
-      const PosColumn(
+      PosColumn(
         text: 'TOTAL',
         width: 6,
         styles: PosStyles(bold: true, height: PosTextSize.size2),
@@ -157,7 +157,7 @@ abstract final class PrinterService {
         size: QRSize.Size6));
     bytes.addAll(gen.feed(1));
     // Barcode of receipt number
-    bytes.addAll(gen.barcode(BarcodeType.code128, Uint8List.fromList(receiptNo.codeUnits)));
+    bytes.addAll(gen.barcode(Barcode.code128(receiptNo.split(''))));
     bytes.addAll(gen.feed(1));
     bytes.addAll(gen.text('* Goods once sold not returnable *',
         styles: const PosStyles(align: PosAlign.center)));
@@ -168,18 +168,103 @@ abstract final class PrinterService {
     return Uint8List.fromList(bytes);
   }
 
-  /// Send bytes over bluetooth. Returns true on success.
-  static Future<bool> printBytes(Uint8List bytes) async {
+  /// Print a receipt over bluetooth using bluetooth_print LineText rows.
+  /// Returns true on success.
+  static Future<bool> printReceipt({
+    required String storeName,
+    required String storeSub,
+    required String kraPin,
+    required String receiptNo,
+    required String cashier,
+    required String? customerLine,
+    required List<(String, double)> items,
+    required double subtotal,
+    required double discount,
+    required double vat,
+    required double total,
+    required String paymentLine,
+    required String? loyaltyLine,
+    required String? cuInvoice,
+    required DateTime when,
+  }) async {
     final device = connected;
     if (device == null) return false;
+    String right(String label, num v) =>
+        '$label${'.' * (26 - label.length)}${v.toStringAsFixed(0)}';
+    final lines = <LineText>[
+      LineText(
+        type: LineText.TYPE_TEXT,
+        content: storeName,
+        align: LineText.ALIGN_CENTER,
+        weight: 1,
+        fontZoom: 2,
+      ),
+      LineText(type: LineText.TYPE_TEXT, content: storeSub, align: LineText.ALIGN_CENTER),
+      LineText(type: LineText.TYPE_TEXT, content: 'PIN: $kraPin', align: LineText.ALIGN_CENTER),
+      LineText(type: LineText.TYPE_TEXT, content: '--------------------------------'),
+      LineText(type: LineText.TYPE_TEXT, content: 'RECEIPT • $receiptNo', weight: 1),
+      LineText(type: LineText.TYPE_TEXT, content: 'Date: ${fmtD(when)} • $cashier'),
+      if (customerLine != null)
+        LineText(type: LineText.TYPE_TEXT, content: customerLine),
+      LineText(type: LineText.TYPE_TEXT, content: '--------------------------------'),
+      for (final (name, amount) in items)
+        LineText(type: LineText.TYPE_TEXT, content: '$name - ${amount.toStringAsFixed(0)}'),
+      LineText(type: LineText.TYPE_TEXT, content: '--------------------------------'),
+      LineText(type: LineText.TYPE_TEXT, content: right('Subtotal: ', subtotal)),
+      if (discount > 0)
+        LineText(type: LineText.TYPE_TEXT, content: right('Discount: ', -discount)),
+      LineText(type: LineText.TYPE_TEXT, content: right('VAT 16%: ', vat)),
+      LineText(
+        type: LineText.TYPE_TEXT,
+        content: right('TOTAL KES ', total),
+        weight: 1,
+        fontZoom: 2,
+      ),
+      LineText(type: LineText.TYPE_TEXT, content: paymentLine, align: LineText.ALIGN_CENTER, weight: 1),
+      if (loyaltyLine != null)
+        LineText(type: LineText.TYPE_TEXT, content: loyaltyLine, align: LineText.ALIGN_CENTER),
+      if (cuInvoice != null) ...[
+        LineText(type: LineText.TYPE_TEXT, content: 'CU: $cuInvoice', align: LineText.ALIGN_CENTER),
+        LineText(
+          type: LineText.TYPE_TEXT,
+          content: 'KRA eTIMS Verified',
+          align: LineText.ALIGN_CENTER,
+          weight: 1,
+        ),
+      ],
+      LineText(
+        type: LineText.TYPE_QRCODE,
+        content: 'DUKAFLOW|$receiptNo|KES${total.toStringAsFixed(0)}',
+        size: 6,
+        align: LineText.ALIGN_CENTER,
+      ),
+      LineText(
+        type: LineText.TYPE_BARCODE,
+        content: receiptNo,
+        align: LineText.ALIGN_CENTER,
+      ),
+      LineText(
+        type: LineText.TYPE_TEXT,
+        content: '* Goods once sold not returnable *',
+        align: LineText.ALIGN_CENTER,
+      ),
+      LineText(
+        type: LineText.TYPE_TEXT,
+        content: 'Powered by DukaFlow',
+        align: LineText.ALIGN_CENTER,
+      ),
+    ];
     try {
-      await _bluetooth.printReceipt(<String, Object?>{
-        'content': bytes,
-        'mac': device.address ?? '',
-      });
+      await _bluetooth.printReceipt(
+        <String, dynamic>{'width': 80, 'height': 100, 'gap': 2},
+        lines,
+      );
       return true;
     } on Exception {
       return false;
     }
   }
 }
+
+String fmtD(DateTime d) =>
+    '${d.day}/${d.month}/${d.year} ${d.hour.toString().padLeft(2, '0')}:${d.minute.toString().padLeft(2, '0')}';
