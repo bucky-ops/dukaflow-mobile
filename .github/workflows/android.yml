@@ -13,6 +13,8 @@ jobs:
     name: Build release APK
     runs-on: ubuntu-latest
     timeout-minutes: 45
+    permissions:
+      contents: write # required to publish GitHub Releases with APKs
     steps:
       - uses: actions/checkout@v4
 
