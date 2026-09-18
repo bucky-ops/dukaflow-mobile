@@ -43,7 +43,7 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-# Firebase config is intentionally NOT committed — drop in your own before release builds
+# Firebase config is intentionally NOT committed - drop in your own before release builds
 google-services.json
 GoogleService-Info.plist
 

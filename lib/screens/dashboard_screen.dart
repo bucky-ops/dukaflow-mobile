@@ -15,7 +15,7 @@ import 'receipt_screen.dart';
 import 'reports_screen.dart';
 import 'settings_screen.dart';
 
-/// Home — KPIs, Quick Actions grid, Live Sales Feed (wireframe screen 3).
+/// Home - KPIs, Quick Actions grid, Live Sales Feed (wireframe screen 3).
 class DashboardScreen extends ConsumerWidget {
   const DashboardScreen({super.key});
 
@@ -142,7 +142,7 @@ class DashboardScreen extends ConsumerWidget {
             const EmptyState(
               icon: Icons.point_of_sale_outlined,
               title: 'No sales yet',
-              body: 'Tap Sell or Scan to make your first sale — works fully offline.',
+              body: 'Tap Sell or Scan to make your first sale - works fully offline.',
             )
           else
             Card(

@@ -11,7 +11,7 @@ import '../services/printer_service.dart';
 import '../state/providers.dart';
 import '../widgets/common.dart';
 
-/// Receipt — 80mm thermal preview with KRA eTIMS QR + Code128 barcode,
+/// Receipt - 80mm thermal preview with KRA eTIMS QR + Code128 barcode,
 /// Bluetooth print, WhatsApp share. Wireframe receipt layout.
 class ReceiptScreen extends ConsumerStatefulWidget {
   final Sale sale;
@@ -33,7 +33,7 @@ class _ReceiptScreenState extends ConsumerState<ReceiptScreen> {
       if (PrinterService.connected == null) {
         if (!mounted) return;
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          content: Text('No printer connected — open Settings → Printers'),
+          content: Text('No printer connected - open Settings → Printers'),
         ));
         return;
       }
@@ -58,7 +58,7 @@ class _ReceiptScreenState extends ConsumerState<ReceiptScreen> {
       );
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text(ok ? 'Printing on EPSON TM-T20…' : 'Print failed — check printer'),
+        content: Text(ok ? 'Printing on EPSON TM-T20…' : 'Print failed - check printer'),
       ));
       if (ok) setState(() => _printed = true);
     } finally {
@@ -77,10 +77,10 @@ class _ReceiptScreenState extends ConsumerState<ReceiptScreen> {
     buf.writeln('KRA eTIMS Verified • Asante!');
     final url =
         'https://wa.me/?text=${Uri.encodeComponent(buf.toString())}';
-    // No url_launcher dep — copy to clipboard + snackbar (fast, offline-safe).
+    // No url_launcher dep - copy to clipboard + snackbar (fast, offline-safe).
     Clipboard.setData(ClipboardData(text: url));
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-      content: Text('WhatsApp share text copied — paste in WhatsApp'),
+      content: Text('WhatsApp share text copied - paste in WhatsApp'),
     ));
   }
 
@@ -138,7 +138,7 @@ class _ReceiptScreenState extends ConsumerState<ReceiptScreen> {
             ),
             const SizedBox(height: 14),
           ],
-          // ── Thermal paper mock ────────────────────────────────
+          // -- Thermal paper mock --------------------------------
           Center(
             child: Container(
               width: 320,

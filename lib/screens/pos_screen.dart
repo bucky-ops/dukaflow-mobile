@@ -9,7 +9,7 @@ import '../widgets/common.dart';
 import 'cart_screen.dart';
 import 'scanner_screen.dart';
 
-/// POS — product grid with category chips + search, cart summary bar.
+/// POS - product grid with category chips + search, cart summary bar.
 class PosScreen extends ConsumerStatefulWidget {
   const PosScreen({super.key});
 

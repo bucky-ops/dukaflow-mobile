@@ -1,5 +1,5 @@
 /// All DukaFlow models. Stored in Hive as JSON maps (offline-first),
-/// so every model has fromJson/toJson — no codegen needed.
+/// so every model has fromJson/toJson - no codegen needed.
 library models;
 
 class Product {
@@ -161,7 +161,7 @@ class Customer {
       };
 }
 
-/// Payment method — mirrors the web POS options.
+/// Payment method - mirrors the web POS options.
 enum PaymentMethod { cash, mpesaStk, card, creditSale }
 
 extension PaymentMethodX on PaymentMethod {
@@ -180,7 +180,7 @@ extension PaymentMethodX on PaymentMethod {
       };
 }
 
-/// A sale — created OFFLINE first, then synced.
+/// A sale - created OFFLINE first, then synced.
 class Sale {
   final String id; // client UUID (also used as clientId on sync)
   final String receiptNo; // provisional offline no; server may reassign

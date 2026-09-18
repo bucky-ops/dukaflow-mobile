@@ -6,7 +6,7 @@ import '../core/utils.dart';
 import '../state/providers.dart';
 import '../widgets/common.dart';
 
-/// Debts — installment plans with overdue flags and pay-installment action.
+/// Debts - installment plans with overdue flags and pay-installment action.
 class DebtsScreen extends ConsumerWidget {
   const DebtsScreen({super.key});
 
@@ -73,7 +73,7 @@ class DebtsScreen extends ConsumerWidget {
                               ),
                             ),
                             Text(
-                              'Next due ${p.nextDueDate.isNotEmpty ? p.nextDueDate : "—"}',
+                              'Next due ${p.nextDueDate.isNotEmpty ? p.nextDueDate : "-"}',
                               style: const TextStyle(
                                 fontSize: 11,
                                 color: DukaColors.inkMuted,
@@ -88,7 +88,7 @@ class DebtsScreen extends ConsumerWidget {
                                       ScaffoldMessenger.of(context).showSnackBar(
                                         SnackBar(
                                           content: Text(
-                                            'STK push for ${kes(p.installmentAmount)} sent — awaiting PIN',
+                                            'STK push for ${kes(p.installmentAmount)} sent - awaiting PIN',
                                           ),
                                         ),
                                       );

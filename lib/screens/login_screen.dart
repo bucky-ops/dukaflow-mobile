@@ -7,7 +7,7 @@ import '../core/theme.dart';
 import '../services/biometric_service.dart';
 import '../state/providers.dart';
 
-/// Login — phone + 4-digit PIN (staff PIN auth) with optional biometric
+/// Login - phone + 4-digit PIN (staff PIN auth) with optional biometric
 /// unlock, mirroring the wireframe: +254 phone field, PIN field with show/
 /// hide, Biometric Login row, version footer.
 class LoginScreen extends ConsumerStatefulWidget {

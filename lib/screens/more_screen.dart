@@ -8,7 +8,7 @@ import 'reports_screen.dart';
 import 'settings_screen.dart';
 import 'sync_center_screen.dart';
 
-/// More — grid of the remaining screens (wireframe covers these as tabs).
+/// More - grid of the remaining screens (wireframe covers these as tabs).
 class MoreScreen extends StatelessWidget {
   const MoreScreen({super.key});
 

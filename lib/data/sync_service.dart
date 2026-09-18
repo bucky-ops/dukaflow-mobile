@@ -33,7 +33,7 @@ abstract final class SyncService {
       final online = results.any((r) => r != ConnectivityResult.none);
       _push(_state.copyWith(online: online));
       if (online && pendingCount() > 0) {
-        syncPending(); // fire & forget — UI listens to state stream
+        syncPending(); // fire & forget - UI listens to state stream
       }
     });
     // seed initial state optimistically as online
@@ -56,7 +56,7 @@ abstract final class SyncService {
       .toList()
     ..sort((a, b) => b.createdAt.compareTo(a.createdAt));
 
-  /// Persist a sale offline-first. Returns nothing — always succeeds.
+  /// Persist a sale offline-first. Returns nothing - always succeeds.
   static void saveOffline(Sale sale) {
     HiveService.pendingSales.put(sale.id, sale.toJson());
     _push(_state.copyWith(queueLength: pendingCount()));

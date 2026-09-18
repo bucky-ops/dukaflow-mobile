@@ -152,7 +152,7 @@ abstract final class PrinterService {
       bytes.addAll(gen.text('KRA eTIMS Verified', styles: const PosStyles(align: PosAlign.center)));
     }
     bytes.addAll(gen.feed(1));
-    // QR — KRA eTIMS verification payload
+    // QR - KRA eTIMS verification payload
     bytes.addAll(gen.qrcode('DUKAFLOW|$receiptNo|KES${total.toStringAsFixed(0)}',
         size: QRSize.Size6));
     bytes.addAll(gen.feed(1));

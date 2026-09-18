@@ -5,7 +5,7 @@ import '../core/utils.dart';
 import '../widgets/common.dart';
 import 'payslip_detail_screen.dart';
 
-/// Payslip summary card (wireframe) — staff see their net pay + detail.
+/// Payslip summary card (wireframe) - staff see their net pay + detail.
 class PayslipScreen extends StatelessWidget {
   const PayslipScreen({super.key});
 

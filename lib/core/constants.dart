@@ -3,7 +3,7 @@ abstract final class AppConstants {
   static const appName = 'DukaFlow';
   static const tagline = 'Sell Smart. Stock Smart.';
 
-  /// Default backend — overridable in Settings (Hive `settings` box).
+  /// Default backend - overridable in Settings (Hive `settings` box).
   static const defaultBaseUrl = 'https://api.dukaflow.site';
 
   /// VAT rate used across totals (Kenya standard rate).
@@ -23,6 +23,6 @@ abstract final class AppConstants {
   static const syncTaskName = 'dukaflow.sync';
   static const syncTaskId = 'dukaflow-sync-periodic';
 
-  /// Variance tolerance for cash drawer (KES) — matches web Day Close.
+  /// Variance tolerance for cash drawer (KES) - matches web Day Close.
   static const varianceTolerance = 100.0;
 }

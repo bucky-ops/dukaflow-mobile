@@ -2,7 +2,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import '../core/constants.dart';
 
-/// Hive bootstrap. All data is stored as JSON maps — no codegen adapters.
+/// Hive bootstrap. All data is stored as JSON maps - no codegen adapters.
 abstract final class HiveService {
   static late Box settings;
   static late Box products;
@@ -19,7 +19,7 @@ abstract final class HiveService {
     receipts = await Hive.openBox(AppConstants.receiptsBox);
   }
 
-  // ── settings box helpers ─────────────────────────────────────
+  // -- settings box helpers -------------------------------------
   static String baseUrl() =>
       (settings.get('baseUrl') as String?) ?? AppConstants.defaultBaseUrl;
 

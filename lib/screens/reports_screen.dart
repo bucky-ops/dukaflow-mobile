@@ -6,7 +6,7 @@ import '../core/utils.dart';
 import '../state/providers.dart';
 import '../widgets/common.dart';
 
-/// Reports — 7-day sales bars + payment mix, computed from local history.
+/// Reports - 7-day sales bars + payment mix, computed from local history.
 class ReportsScreen extends ConsumerWidget {
   const ReportsScreen({super.key});
 

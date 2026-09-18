@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// DukaFlow design tokens — mirrored from the web design system.
+/// DukaFlow design tokens - mirrored from the web design system.
 abstract final class DukaColors {
   static const primary = Color(0xFF0052CC);
   static const primaryDark = Color(0xFF0747A6);

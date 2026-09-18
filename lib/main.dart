@@ -14,7 +14,7 @@ import 'screens/splash_screen.dart';
 import 'services/fcm_service.dart';
 import 'state/providers.dart';
 
-/// Background sync entry point — runs even when the app is closed (Android).
+/// Background sync entry point - runs even when the app is closed (Android).
 @pragma('vm:entry-point')
 void callbackDispatcher() {
   Workmanager().executeTask((task, _) async {
@@ -32,7 +32,7 @@ Future<void> main() async {
   unawaited(FcmService.init()); // no-op until Firebase config is dropped in
 
   // Periodic background sync (Android). iOS uses BGTaskScheduler via
-  // workmanager — registered defensively.
+  // workmanager - registered defensively.
   try {
     await Workmanager().initialize(callbackDispatcher, isInDebugMode: false);
     await Workmanager().registerPeriodicTask(
@@ -43,7 +43,7 @@ Future<void> main() async {
       existingWorkPolicy: ExistingWorkPolicy.keep,
     );
   } on Exception {
-    // workmanager unavailable (e.g. iOS before plist config) — in-app sync
+    // workmanager unavailable (e.g. iOS before plist config) - in-app sync
     // still works via connectivity listener.
   }
 

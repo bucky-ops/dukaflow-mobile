@@ -1,4 +1,4 @@
-// Root build file — DukaFlow Mobile (Flutter 3.22 template layout).
+// Root build file - DukaFlow Mobile (Flutter 3.22 template layout).
 allprojects {
     repositories {
         google()
@@ -9,7 +9,7 @@ allprojects {
 rootProject.buildDir = "../build"
 
 subprojects {
-    // AGP 8 requires a namespace — legacy plugins (e.g. bluetooth_print) only
+    // AGP 8 requires a namespace - legacy plugins (e.g. bluetooth_print) only
     // declare `package` in their manifest. Register the shim BEFORE any
     // evaluationDependsOn below, otherwise the project is already evaluated
     // and afterEvaluate throws.

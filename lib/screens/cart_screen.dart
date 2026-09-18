@@ -8,7 +8,7 @@ import '../state/providers.dart';
 import '../widgets/common.dart';
 import 'payment_screen.dart';
 
-/// Cart — line qty steppers, customer picker (search by phone), loyalty
+/// Cart - line qty steppers, customer picker (search by phone), loyalty
 /// toggle ("Use 300 pts = KES 300"), totals with VAT 16%.
 class CartScreen extends ConsumerStatefulWidget {
   const CartScreen({super.key});

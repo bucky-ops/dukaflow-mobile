@@ -8,7 +8,7 @@ import '../state/providers.dart';
 import '../widgets/common.dart';
 import 'receipt_screen.dart';
 
-/// Sales history — merged pending + synced receipts with status filter.
+/// Sales history - merged pending + synced receipts with status filter.
 class HistoryScreen extends ConsumerStatefulWidget {
   const HistoryScreen({super.key});
 
@@ -77,7 +77,7 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
                 ? const EmptyState(
                     icon: Icons.receipt_long_outlined,
                     title: 'No receipts',
-                    body: 'Your sales will appear here — online or offline.',
+                    body: 'Your sales will appear here - online or offline.',
                   )
                 : RefreshIndicator(
                     onRefresh: () async =>

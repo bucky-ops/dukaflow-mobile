@@ -6,7 +6,7 @@ import '../core/utils.dart';
 import '../widgets/common.dart';
 import 'receipt_screen.dart';
 
-/// Full payslip detail — line items + Verified QR (wireframe).
+/// Full payslip detail - line items + Verified QR (wireframe).
 class PayslipDetailScreen extends StatelessWidget {
   const PayslipDetailScreen({super.key});
 
@@ -99,7 +99,7 @@ class PayslipDetailScreen extends StatelessWidget {
             child: TextButton.icon(
               onPressed: () {
                 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                  content: Text('Payslip PDF queued — will email when online'),
+                  content: Text('Payslip PDF queued - will email when online'),
                 ));
               },
               icon: const Icon(Icons.picture_as_pdf_outlined),

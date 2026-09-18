@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../core/theme.dart';
 import '../core/utils.dart';
 
-/// Shared UI atoms — KPI cards, badges, section headers, empty states.
+/// Shared UI atoms - KPI cards, badges, section headers, empty states.
 
 class KpiCard extends StatelessWidget {
   final String label;
@@ -239,7 +239,7 @@ class OfflineBanner extends StatelessWidget {
               SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'Offline — sales save locally and sync automatically',
+                  'Offline - sales save locally and sync automatically',
                   style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
                 ),
               ),

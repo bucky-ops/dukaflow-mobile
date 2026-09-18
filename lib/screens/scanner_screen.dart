@@ -3,7 +3,7 @@ import 'package:mobile_scanner/mobile_scanner.dart';
 
 import '../core/theme.dart';
 
-/// Barcode / QR scanner — product barcodes and gift-card QRs.
+/// Barcode / QR scanner - product barcodes and gift-card QRs.
 /// Returns the scanned code string to the caller (POS) via Navigator.pop.
 class ScannerScreen extends StatefulWidget {
   const ScannerScreen({super.key});

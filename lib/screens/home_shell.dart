@@ -10,7 +10,7 @@ import 'more_screen.dart';
 import 'pos_screen.dart';
 import 'scanner_screen.dart';
 
-/// App shell — bottom navigation (Home / Sell / Scan / History / More)
+/// App shell - bottom navigation (Home / Sell / Scan / History / More)
 /// with a central scan FAB, offline banner and sync indicator.
 class HomeShell extends ConsumerStatefulWidget {
   final int initialTab;
@@ -54,7 +54,7 @@ class _HomeShellState extends ConsumerState<HomeShell> {
           ],
         ),
         actions: [
-          // Offline queue badge — tap to force sync.
+          // Offline queue badge - tap to force sync.
           IconButton(
             tooltip: 'Sync',
             onPressed: () => ref.read(syncProvider.notifier).syncNow(),

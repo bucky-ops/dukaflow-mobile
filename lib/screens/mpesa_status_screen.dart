@@ -6,7 +6,7 @@ import '../models/models.dart';
 import '../services/mpesa_service.dart';
 import 'receipt_screen.dart';
 
-/// M-Pesa STK status — "Awaiting customer PIN…" per the wireframe, with
+/// M-Pesa STK status - "Awaiting customer PIN…" per the wireframe, with
 /// graceful offline degradation. Tap continue to open the receipt.
 class MpesaStatusScreen extends StatefulWidget {
   final Sale sale;
@@ -76,7 +76,7 @@ class _MpesaStatusScreenState extends State<MpesaStatusScreen>
                 waiting
                     ? 'Awaiting customer PIN…'
                     : offline
-                        ? 'Offline — M-Pesa pending'
+                        ? 'Offline - M-Pesa pending'
                         : failed
                             ? 'STK push failed'
                             : 'M-Pesa confirmed',
@@ -107,7 +107,7 @@ class _MpesaStatusScreenState extends State<MpesaStatusScreen>
               ),
               const SizedBox(height: 6),
               Text(
-                'Sale is saved on-device and will sync — M-Pesa confirmation '
+                'Sale is saved on-device and will sync - M-Pesa confirmation '
                 'arrives via Daraja callback.',
                 textAlign: TextAlign.center,
                 style: const TextStyle(fontSize: 11, color: DukaColors.inkMuted),

@@ -8,7 +8,7 @@ import '../state/providers.dart';
 import '../widgets/common.dart';
 import 'customer_detail_screen.dart';
 
-/// Customers — search by phone (wireframe), debtors summary, tier badges.
+/// Customers - search by phone (wireframe), debtors summary, tier badges.
 class CustomersScreen extends ConsumerStatefulWidget {
   const CustomersScreen({super.key});
 

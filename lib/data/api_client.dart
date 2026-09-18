@@ -65,7 +65,7 @@ abstract final class Api {
     );
   }
 
-  // ── Generic verbs ──────────────────────────────────────────────
+  // -- Generic verbs ----------------------------------------------
   static Future<dynamic> get(String path, {Map<String, dynamic>? query}) async {
     try {
       final r = await dio.get(path, queryParameters: query);
@@ -84,7 +84,7 @@ abstract final class Api {
     }
   }
 
-  // ── DukaFlow API (matches the web app routes) ──────────────────
+  // -- DukaFlow API (matches the web app routes) ------------------
   static Future<Map<String, dynamic>> login(String pin) async {
     final data = await post('/api/auth/login', body: {'pin': pin});
     if (data is Map && data['ok'] == true) {
@@ -127,7 +127,7 @@ abstract final class Api {
     return data is Map ? Map<String, dynamic>.from(data) : {};
   }
 
-  // ── Frappe/ERPNext style (when backend is ERPNext) ────────────
+  // -- Frappe/ERPNext style (when backend is ERPNext) ------------
   static Future<List<dynamic>> frappeList(String doctype, {Map<String, dynamic>? filters}) async {
     final data = await get(
       '/api/resource/$doctype',

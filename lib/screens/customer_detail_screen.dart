@@ -7,7 +7,7 @@ import '../models/models.dart';
 import '../state/providers.dart';
 import '../widgets/common.dart';
 
-/// Customer detail — loyalty, debt, credit limit, quick M-Pesa debt request.
+/// Customer detail - loyalty, debt, credit limit, quick M-Pesa debt request.
 class CustomerDetailScreen extends StatelessWidget {
   final Customer customer;
 

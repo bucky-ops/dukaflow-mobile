@@ -1,6 +1,6 @@
 import 'package:intl/intl.dart';
 
-/// KES money formatter — "KES 1,250" / compact "KES 1.3M".
+/// KES money formatter - "KES 1,250" / compact "KES 1.3M".
 String kes(num n, {bool compact = false}) {
   if (compact) {
     if (n.abs() >= 1000000) return 'KES ${(n / 1000000).toStringAsFixed(1)}M';

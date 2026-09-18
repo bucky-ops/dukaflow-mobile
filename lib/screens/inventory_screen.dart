@@ -6,7 +6,7 @@ import '../core/utils.dart';
 import '../state/providers.dart';
 import '../widgets/common.dart';
 
-/// Inventory — stock levels with low-stock flags + store transfer composer
+/// Inventory - stock levels with low-stock flags + store transfer composer
 /// (mirrors the wireframe's Stock Transfer card).
 class InventoryScreen extends ConsumerStatefulWidget {
   const InventoryScreen({super.key});
@@ -32,7 +32,7 @@ class _InventoryScreenState extends ConsumerState<InventoryScreen> {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          // ── Stock transfer composer (wireframe) ────────────────
+          // -- Stock transfer composer (wireframe) ----------------
           Card(
             child: Padding(
               padding: const EdgeInsets.all(14),
@@ -86,7 +86,7 @@ class _InventoryScreenState extends ConsumerState<InventoryScreen> {
                               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                 content: Text(
                                   'Transfer of $_selected items queued '
-                                  '($_fromStore → $_toStore) — syncs when online',
+                                  '($_fromStore → $_toStore) - syncs when online',
                                 ),
                               ));
                               setState(() => _selected.clear());

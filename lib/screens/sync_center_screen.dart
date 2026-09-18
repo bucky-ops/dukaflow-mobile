@@ -7,7 +7,7 @@ import '../data/sync_service.dart';
 import '../state/providers.dart';
 import '../widgets/common.dart';
 
-/// Sync Center — offline queue drill-down: progress, pending sales,
+/// Sync Center - offline queue drill-down: progress, pending sales,
 /// conflicts with "Resolve" (wireframe).
 class SyncCenterScreen extends ConsumerStatefulWidget {
   const SyncCenterScreen({super.key});
@@ -46,7 +46,7 @@ class _SyncCenterScreenState extends ConsumerState<SyncCenterScreen> {
                       ),
                       const SizedBox(width: 8),
                       Text(
-                        sync.online ? 'Online' : 'Offline — sales saved locally',
+                        sync.online ? 'Online' : 'Offline - sales saved locally',
                         style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 14),
                       ),
                       const Spacer(),
@@ -89,7 +89,7 @@ class _SyncCenterScreenState extends ConsumerState<SyncCenterScreen> {
                               setState(() => _syncing = false);
                               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                 content: Text(
-                                  'Sync done — ${r.ok} uploaded'
+                                  'Sync done - ${r.ok} uploaded'
                                   '${r.failed > 0 ? ", ${r.failed} waiting" : ""}',
                                 ),
                               ));
@@ -131,10 +131,10 @@ class _SyncCenterScreenState extends ConsumerState<SyncCenterScreen> {
                   ),
                   trailing: OutlinedButton(
                     onPressed: () {
-                      // Resolution: keep server state for stock conflicts —
+                      // Resolution: keep server state for stock conflicts -
                       // re-queue the sale untouched; owner reviews on web.
                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                        content: Text('Kept server stock — sale re-queued for review'),
+                        content: Text('Kept server stock - sale re-queued for review'),
                       ));
                     },
                     child: const Text('Resolve'),

@@ -1,4 +1,4 @@
-# Codemagic — free-tier iOS build (500 min/month)
+# Codemagic - free-tier iOS build (500 min/month)
 # 1. Sign up at codemagic.io with the GitHub repo.
 # 2. Start build with workflow "ios-workflow".
 #    * Unsigned IPA: works with zero Apple credentials.

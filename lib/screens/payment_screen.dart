@@ -14,7 +14,7 @@ import '../widgets/common.dart';
 import 'mpesa_status_screen.dart';
 import 'receipt_screen.dart';
 
-/// Payment — method selector (Cash / M-Pesa STK / Card / Credit Sale),
+/// Payment - method selector (Cash / M-Pesa STK / Card / Credit Sale),
 /// tendered change for cash, then finalize the sale OFFLINE-FIRST.
 class PaymentScreen extends ConsumerStatefulWidget {
   const PaymentScreen({super.key});
@@ -69,7 +69,7 @@ class _PaymentScreenState extends ConsumerState<PaymentScreen> {
       createdAt: DateTime.now(),
     );
 
-    // 1) OFFLINE FIRST — persist to Hive 'pending_sales' immediately.
+    // 1) OFFLINE FIRST - persist to Hive 'pending_sales' immediately.
     SyncService.saveOffline(sale);
 
     // 2) Try instant sync (skips silently when offline).
@@ -148,7 +148,7 @@ class _PaymentScreenState extends ConsumerState<PaymentScreen> {
                   subtitle: Text(
                     switch (m) {
                       PaymentMethod.cash => 'Count cash + change calculator',
-                      PaymentMethod.mpesaStk => 'Lipa na M-Pesa — STK push (Daraja)',
+                      PaymentMethod.mpesaStk => 'Lipa na M-Pesa - STK push (Daraja)',
                       PaymentMethod.card => 'Card terminal settlement',
                       PaymentMethod.creditSale => 'Record as customer debt',
                     },
@@ -215,7 +215,7 @@ class _PaymentScreenState extends ConsumerState<PaymentScreen> {
           ],
           if (_method == PaymentMethod.creditSale && cart.customer == null) ...[
             const SizedBox(height: 8),
-            const StatusChip('Credit sale needs a customer — pick one in cart',
+            const StatusChip('Credit sale needs a customer - pick one in cart',
                 DukaColors.warning),
           ],
           const SizedBox(height: 20),
@@ -243,7 +243,7 @@ class _PaymentScreenState extends ConsumerState<PaymentScreen> {
           const SizedBox(height: 8),
           const Center(
             child: Text(
-              'Sale is saved on-device first, then synced — never lose a sale.',
+              'Sale is saved on-device first, then synced - never lose a sale.',
               style: TextStyle(fontSize: 11, color: DukaColors.inkMuted),
             ),
           ),

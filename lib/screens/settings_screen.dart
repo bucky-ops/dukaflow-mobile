@@ -14,7 +14,7 @@ import '../state/providers.dart';
 import '../widgets/common.dart';
 import 'sync_center_screen.dart';
 
-/// Settings — profile, sync center, Bluetooth printers, biometric, API
+/// Settings - profile, sync center, Bluetooth printers, biometric, API
 /// (DukaFlow REST + Frappe token), dark mode toggle (wireframe).
 class SettingsScreen extends ConsumerStatefulWidget {
   const SettingsScreen({super.key});
@@ -139,7 +139,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                             if (devices.isEmpty) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
-                                  content: Text('No bluetooth printers found — pair in system settings'),
+                                  content: Text('No bluetooth printers found - pair in system settings'),
                                 ),
                               );
                               return;
@@ -279,7 +279,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               ),
               subtitle: Text(
                 FcmService.isConfigured
-                    ? 'Firebase configured — alerts active'
+                    ? 'Firebase configured - alerts active'
                     : 'Add google-services.json to enable (README)',
                 style: const TextStyle(fontSize: 11),
               ),

@@ -8,9 +8,9 @@ import '../data/hive_service.dart';
 import '../data/sync_service.dart';
 import '../models/models.dart';
 
-// ─────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------
 // Auth / session
-// ─────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------
 
 class SessionState {
   final bool loading;
@@ -36,7 +36,7 @@ class SessionNotifier extends StateNotifier<SessionState> {
 
   bool get isLoggedIn => state.user != null;
 
-  /// Biometric unlock path — restore the locally saved session (no PIN).
+  /// Biometric unlock path - restore the locally saved session (no PIN).
   Future<void> restore() async {
     final user = _restore();
     if (user != null) {
@@ -58,13 +58,13 @@ class SessionNotifier extends StateNotifier<SessionState> {
       state = SessionState(user: staff);
       unawaited(bootstrapCaches());
     } on Exception catch (e) {
-      // OFFLINE fallback: allow known cached session PIN-less? No —
+      // OFFLINE fallback: allow known cached session PIN-less? No -
       // require server except when a previous session exists on device.
       final cached = HiveService.session();
       if (cached != null) {
         state = SessionState(
           user: _restore(),
-          error: 'Offline — unlocked with saved session',
+          error: 'Offline - unlocked with saved session',
         );
       } else {
         state = SessionState(error: e.toString().replaceFirst('Exception: ', ''));
@@ -87,7 +87,7 @@ class SessionNotifier extends StateNotifier<SessionState> {
         HiveService.products.put(map['id'], map);
       }
     } on Exception {
-      // offline — keep cached
+      // offline - keep cached
     }
     try {
       final custs = await Api.customers();
@@ -97,7 +97,7 @@ class SessionNotifier extends StateNotifier<SessionState> {
         HiveService.customers.put(map['id'], map);
       }
     } on Exception {
-      // offline — keep cached
+      // offline - keep cached
     }
   }
 }
@@ -105,9 +105,9 @@ class SessionNotifier extends StateNotifier<SessionState> {
 final sessionProvider =
     StateNotifierProvider<SessionNotifier, SessionState>((ref) => SessionNotifier());
 
-// ─────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------
 // Sync state → reactive for UI
-// ─────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------
 
 class SyncNotifier extends StateNotifier<SyncState> {
   SyncNotifier() : super(SyncService.state) {
@@ -131,9 +131,9 @@ class SyncNotifier extends StateNotifier<SyncState> {
 
 final syncProvider = StateNotifierProvider<SyncNotifier, SyncState>((ref) => SyncNotifier());
 
-// ─────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------
 // Products (Hive cache first, refresh from API)
-// ─────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------
 
 class ProductsState {
   final List<Product> items;
@@ -186,9 +186,9 @@ class ProductsNotifier extends StateNotifier<ProductsState> {
 final productsProvider =
     StateNotifierProvider<ProductsNotifier, ProductsState>((ref) => ProductsNotifier());
 
-// ─────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------
 // Cart
-// ─────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------
 
 class CartState {
   final List<CartLine> lines;
@@ -280,9 +280,9 @@ class CartNotifier extends StateNotifier<CartState> {
 
 final cartProvider = StateNotifierProvider<CartNotifier, CartState>((ref) => CartNotifier());
 
-// ─────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------
 // Sales history (pending + synced)
-// ─────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------
 
 class HistoryNotifier extends StateNotifier<List<Sale>> {
   HistoryNotifier() : super(const []) {
@@ -300,9 +300,9 @@ class HistoryNotifier extends StateNotifier<List<Sale>> {
 final historyProvider =
     StateNotifierProvider<HistoryNotifier, List<Sale>>((ref) => HistoryNotifier());
 
-// ─────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------
 // Customers
-// ─────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------
 
 class CustomersNotifier extends StateNotifier<List<Customer>> {
   CustomersNotifier() : super(const []) {
@@ -326,7 +326,7 @@ class CustomersNotifier extends StateNotifier<List<Customer>> {
       }
       _loadFromCache();
     } on Exception {
-      // offline — cache is already loaded
+      // offline - cache is already loaded
     }
   }
 
@@ -344,9 +344,9 @@ class CustomersNotifier extends StateNotifier<List<Customer>> {
 final customersProvider =
     StateNotifierProvider<CustomersNotifier, List<Customer>>((ref) => CustomersNotifier());
 
-// ─────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------
 // Debts
-// ─────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------
 
 final debtPlansProvider = FutureProvider<List<DebtPlan>>((ref) async {
   try {
@@ -357,9 +357,9 @@ final debtPlansProvider = FutureProvider<List<DebtPlan>>((ref) async {
   }
 });
 
-// ─────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------
 // Dashboard
-// ─────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------
 
 final dashboardProvider = FutureProvider<DashboardData>((ref) async {
   try {
@@ -380,9 +380,9 @@ final dashboardProvider = FutureProvider<DashboardData>((ref) async {
   }
 });
 
-// ─────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------
 // Settings
-// ─────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------
 
 class SettingsState {
   final String baseUrl;

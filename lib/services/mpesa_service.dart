@@ -1,6 +1,6 @@
 import '../data/api_client.dart';
 
-/// M-Pesa STK (Lipa na M-Pesa — Push) via the backend Daraja integration.
+/// M-Pesa STK (Lipa na M-Pesa - Push) via the backend Daraja integration.
 ///
 /// Flow: app → POST /api/mpesa/stk → backend talks to Safaricom Daraja →
 /// STK prompt lands on the customer's phone → backend receives the callback.
@@ -10,7 +10,7 @@ abstract final class MpesaService {
 
   static StkResult get last => _last;
 
-  /// Trigger the STK push. Never throws — errors become a failed StkResult
+  /// Trigger the STK push. Never throws - errors become a failed StkResult
   /// so the UI can degrade gracefully to offline mode.
   static Future<StkResult> push({
     required String phone,
@@ -71,6 +71,6 @@ class StkResult {
         StkStatus.awaitingPin => 'Awaiting customer PIN…',
         StkStatus.confirmed => 'M-Pesa confirmed',
         StkStatus.failed => error,
-        StkStatus.offline => 'Offline — sale saved, M-Pesa pending',
+        StkStatus.offline => 'Offline - sale saved, M-Pesa pending',
       };
 }

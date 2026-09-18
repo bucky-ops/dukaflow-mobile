@@ -4,7 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 
-/// Firebase Cloud Messaging — low-stock alerts, debt reminders, day-close
+/// Firebase Cloud Messaging - low-stock alerts, debt reminders, day-close
 /// nudges.
 ///
 /// The repo intentionally ships WITHOUT google-services.json /
@@ -33,7 +33,7 @@ abstract final class FcmService {
       final token = await messaging.getToken();
       if (token != null) _tokenCtrl.add(token);
     } on Exception catch (_) {
-      _configured = false; // no Firebase config — fine, keep running
+      _configured = false; // no Firebase config - fine, keep running
     }
   }
 }
